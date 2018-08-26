@@ -19,10 +19,17 @@ const inquirer = require('inquirer');
    main(){
      console.log(`Welcome to AddressBloc!`);
      inquirer.prompt(this.mainMenuQuestions).then((response) => {
-       switch(response.mainMenuChoice){
+       .prompt(this.mainMenuQuestions)
+       .then(response =>
+         switch(response.mainMenuChoice){
          case "Add new contact":
            this.addContact();
            break;
+         case "Display Current Time & Date":
+          this.clear();
+          this.getDate();
+          this.main();
+          break;
          case "Exit":
            this.exit();
          default:
@@ -50,4 +57,17 @@ const inquirer = require('inquirer');
      console.log("Thanks for using AddressBloc!");
      process.exit();
    }
+
+   getDate() {
+     function addZero(i) {if (i < 10) {i = "0" + i;} return i;}
+     var currentDate = new Date();
+     var hours = addZero(currentDate.getHours());
+     var minutes = addZero(currentDate.getMinutes());
+     var seconds = addZero(currentDate.getSeconds());
+     var date = addZero(currentDate.getDate());
+     var month = addZero(currentDate.getMonth() + 1);
+     var year = currentDate.getFullYear();
+     var dateString = 'It is ' + hours + ':' + minutes + ':' + seconds + ' on ' + (month) + '/' + date + '/' + year;
+     console.log(dateString);
+}
  }
