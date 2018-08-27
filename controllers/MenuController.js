@@ -18,9 +18,9 @@ const inquirer = require('inquirer');
 
    main(){
      console.log(`Welcome to AddressBloc!`);
-     inquirer.prompt(this.mainMenuQuestions).then((response) => {
+     inquirer
        .prompt(this.mainMenuQuestions)
-       .then(response =>
+       .then((response) => {
          switch(response.mainMenuChoice){
          case "Add new contact":
            this.addContact();
@@ -57,6 +57,10 @@ const inquirer = require('inquirer');
      console.log("Thanks for using AddressBloc!");
      process.exit();
    }
+
+   getContactCount(){
+     return this.contacts.length;
+}
 
    getDate() {
      function addZero(i) {if (i < 10) {i = "0" + i;} return i;}
