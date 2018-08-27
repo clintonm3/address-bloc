@@ -26,10 +26,13 @@ const inquirer = require('inquirer');
            this.addContact();
            break;
          case "Display Current Time & Date":
-          this.clear();
-          this.getDate();
-          this.main();
-          break;
+           this.clear();
+           this.getDate();
+           this.main();
+           break;
+         case "Remind Me":
+           this.remindMe();
+           break;
          case "Exit":
            this.exit();
          default:
@@ -60,7 +63,7 @@ const inquirer = require('inquirer');
 
    getContactCount(){
      return this.contacts.length;
-}
+   }
 
    getDate() {
      function addZero(i) {if (i < 10) {i = "0" + i;} return i;}
@@ -73,5 +76,13 @@ const inquirer = require('inquirer');
      var year = currentDate.getFullYear();
      var dateString = 'It is ' + hours + ':' + minutes + ':' + seconds + ' on ' + (month) + '/' + date + '/' + year;
      console.log(dateString);
-}
+   }
+
+   remindMe() {
+     console.log("Learning is a life-long pursuit");
+     this.main();
+     return 'Learning is a life-long pursuit';
+   }
+
+
  }
